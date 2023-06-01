@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <h1>Identify Fruits</h1>
+    <p id="score">Score: 0</p>
+    <div id="items" class="items">
+        <div class="item">
+            <img id="drag1" draggable="true" ondragstart="drag(event)" src="fruits/apple.svg" alt="Apple" class="item1 fruit">
+        </div>
+        <div class="item">
+
+            <img id="drag2" draggable="true" ondragstart="drag(event)" src="random/redChilli.svg" alt="Orange" class="item2">
+        </div>
+        <div class="item">
+
+            <img id="drag3" draggable="true" ondragstart="drag(event)" src="random/brinjal.svg" alt="" class="item3">
+        </div>
+        <div class="item">
+
+            <img id="drag4" draggable="true" ondragstart="drag(event)" src="random/cucumber.svg" alt="Carrot" class="item3">
+        </div>
+        <div class="item">
+
+            <img id="drag5" draggable="true" ondragstart="drag(event)" src="random/pea.svg" alt="Ball" class="item5">
+        </div>
+
+
+    </div>
+    <div id="dropTarget" class="drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span id="dragText">Drag Fruit here</span>
+        <span id="mark"></span>
+        <audio id="awesomeSound">
+          <source src="awesome.mp3" type="audio/mpeg">
+      </audio>
+        <audio id="yuckySound">
+          <source src="yucky.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <button class="button-1" role="button">Next</button>
+
+
+    <script src=" script.js "></script>
+</body>
+
+</html>

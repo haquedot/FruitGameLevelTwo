@@ -1,0 +1,99 @@
+body {
+    background-color: #ecf9f3;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+#score {
+    font-size: 20px;
+}
+
+#items {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.items div {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.item {
+    display: flex;
+    width: 150px;
+    margin: 10px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.item img {
+    width: 150px;
+}
+
+.drop {
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop img {
+    width: 200px;
+}
+
+#mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+}
+
+
+/* CSS */
+
+.button-1 {
+    margin: 40px;
+    background-color: #004e29;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+    background-color: #F082AC;
+}
