@@ -1,3 +1,56 @@
+// Function to allow dropping
+function dragF() {
+    allowDrop(ev);
+    drag(ev);
+    drop(ev);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+// Function to handle the drag event
+function drag(ev) {
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+}
+
+// Function to handle the drop event
+function drop(ev) {
+    ev.preventDefault();
+    // const drag = document.getElementById("dropTarget");
+    const dragItem = document.getElementsByClassName("drag");
+    var data = ev.dataTransfer.getData("text/plain");
+    var draggedElement = document.getElementById(data);
+    var dropTarget = document.getElementById("dropTarget");
+
+    var spanElements = dropTarget.getElementsByClassName("mark");
+    console.log(draggedElement);
+    dropTarget.appendChild(draggedElement);
+    document.getElementById("dragText").style.display = "none"; // Hide the drag text
+
+    // Check if the dropped item is a fruit
+    if (draggedElement.classList.contains("fruit")) {
+        spanElements[0].style.display = 'block';
+        document.getElementById("mark").innerHTML = "&#10003;"; // Add a tick mark
+        document.getElementById("mark").style.color = "green"; // Set color to green
+        document.getElementById("awesomeSound").play(); // Play the awesome sound
+        updateScore(1); // Increment the score by 1
+    } else {
+        spanElements[0].style.display = 'block';
+        document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
+        document.getElementById("mark").style.color = "red"; // Set color to red
+        document.getElementById("yuckySound").play(); // Play the yucky sound
+        updateScore(-1); // Decrement the score by 1
+    }
+    if (dropTarget.hasChildNodes) {
+        // console.log('hello');
+        // draggedElement.draggable = false; // Exit the function if the dragged element is already in the dropTarget
+        for (var i = 0; i < dragItem.length; i++) {
+            dragItem[i].draggable = false;
+        }
+    }
+}
+
 // Get the "Next" button
 const nextButton = document.querySelector(".button-1");
 
@@ -5,6 +58,7 @@ const nextButton = document.querySelector(".button-1");
 nextButton.addEventListener("click", function() {
     addRandomItems();
     clearDropTarget();
+
 });
 
 // Function to add random items to the items div
@@ -24,11 +78,14 @@ function addRandomItems() {
         "random/brinjal.svg",
         "random/cucumber.svg",
         "random/pea.svg",
+        "random/tomato.svg",
     ];
 
     const fruits = [
         "fruits/apple.svg",
-        "fruits/orange.svg"
+        "fruits/orange.svg",
+        "fruits/bananas.svg"
+
     ];
 
     // Randomly select a position index for the fruit item
@@ -62,6 +119,12 @@ function addRandomItems() {
         itemImg.src = itemImage;
         itemImg.alt = itemAlt;
         itemImg.draggable = true;
+        itemImg.id = 'drag' + (i + 1);
+        itemImg.classList.add('drag');
+        console.log(itemImage.substring(0, 6));
+        if (itemImage.substring(0, 6) == 'fruits') {
+            itemImg.classList.add('fruit');
+        }
         itemImg.addEventListener("dragstart", drag);
 
         // Append the item to the items div
@@ -70,50 +133,35 @@ function addRandomItems() {
     }
 }
 // Function to clear the drop target
+// function clearDropTarget() {
+//     console.log('hello');
+//     while (dropTarget.firstChild) {
+//         dropTarget.removeChild(dropTarget.firstChild);
+//     }
+// }
 function clearDropTarget() {
-    console.log('hello');
-    while (dropTarget.firstChild) {
-        console.log('1');
-        dropTarget.removeChild(dropTarget.firstChild);
+    const dropTarget = document.getElementById("dropTarget");
+
+    // Remove any existing img elements
+    const imgElements = dropTarget.getElementsByTagName("img");
+    while (imgElements.length > 0) {
+        imgElements[0].parentNode.removeChild(imgElements[0]);
     }
+
+    // Remove any existing span elements
+    const spanElements = dropTarget.getElementsByClassName("mark");
+    console.log(spanElements);
+    // while (spanElements.length > 0) {
+    //     spanElements[0].parentNode.removeChild(spanElements[0]);
+    // }
+    spanElements[0].style.display = 'none';
+    const dragText = document.getElementById("dragText");
+    dragText.style.display = "flex";
+
+    // document.getElementById("dragText").style.display = "none"; // Hide the drag text
+
+
 }
-
-// Function to allow dropping
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-// Function to handle the drag event
-function drag(ev) {
-    ev.dataTransfer.setData("text/plain", ev.target.id);
-}
-
-// Function to handle the drop event
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text/plain");
-    var draggedElement = document.getElementById(data);
-    var dropTarget = ev.target;
-    if (dropTarget.contains(draggedElement)) {
-        return; // Exit the function if the dragged element is already in the dropTarget
-    }
-    dropTarget.appendChild(draggedElement);
-    document.getElementById("dragText").style.display = "none"; // Hide the drag text
-
-    // Check if the dropped item is a fruit
-    if (draggedElement.classList.contains("fruit")) {
-        document.getElementById("mark").innerHTML = "&#10003;"; // Add a tick mark
-        document.getElementById("mark").style.color = "green"; // Set color to green
-        document.getElementById("awesomeSound").play(); // Play the awesome sound
-        updateScore(1); // Increment the score by 1
-    } else {
-        document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
-        document.getElementById("mark").style.color = "red"; // Set color to red
-        document.getElementById("yuckySound").play(); // Play the yucky sound
-        updateScore(-1); // Decrement the score by 1
-    }
-}
-
 // Function to update the score
 function updateScore(scoreChange) {
     const scoreElement = document.getElementById("score");
