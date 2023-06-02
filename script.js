@@ -67,7 +67,7 @@ nextButton.addEventListener("click", function() {
 
 
 });
-
+let itemCount = 2;
 // Function to add random items to the items div
 function addRandomItems() {
     // Get the items div
@@ -113,13 +113,13 @@ function addRandomItems() {
     const fruitPositionIndex = Math.floor(Math.random() * 5);
 
     // Create additional random items (non-fruit)
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < itemCount; i++) {
         let itemImage;
         let itemAlt;
 
         if (i === fruitPositionIndex) {
             // Randomly select a fruit image from the fruits array
-            const randomFruitIndex = Math.floor(Math.random() * fruits.length);
+            const randomFruitIndex = Math.floor(Math.random() * itemCount);
             itemImage = fruits[randomFruitIndex];
             itemAlt = "Fruit";
             fruits.splice(randomFruitIndex, 1); // Remove the selected fruit from the array
@@ -152,6 +152,11 @@ function addRandomItems() {
         // Append the item to the items div
         itemDiv.appendChild(itemImg);
         itemsDiv.appendChild(itemDiv);
+    }
+    if (itemCount === 5) {
+        return
+    } else {
+        itemCount++;
     }
 }
 
