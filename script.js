@@ -22,7 +22,6 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text/plain");
     var draggedElement = document.getElementById(data);
     var dropTarget = document.getElementById("dropTarget");
-
     var spanElements = dropTarget.getElementsByClassName("mark");
     console.log(draggedElement);
     dropTarget.appendChild(draggedElement);
@@ -34,17 +33,24 @@ function drop(ev) {
         document.getElementById("mark").innerHTML = "&#10003;"; // Add a tick mark
         document.getElementById("mark").style.color = "green"; // Set color to green
         document.getElementById("awesomeSound").play(); // Play the awesome sound
+
         updateScore(1); // Increment the score by 1
+        const gif1 = document.getElementsByClassName("gif1");
+        if (gif1.length > 0) {
+            gif1[0].style.display = 'block';
+        }
     } else {
         spanElements[0].style.display = 'block';
         document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
         document.getElementById("mark").style.color = "red"; // Set color to red
         document.getElementById("yuckySound").play(); // Play the yucky sound
         updateScore(-1); // Decrement the score by 1
+        const gif2 = document.getElementsByClassName("gif2");
+        if (gif2.length > 0) {
+            gif2[0].style.display = 'block';
+        }
     }
     if (dropTarget.hasChildNodes) {
-        // console.log('hello');
-        // draggedElement.draggable = false; // Exit the function if the dragged element is already in the dropTarget
         for (var i = 0; i < dragItem.length; i++) {
             dragItem[i].draggable = false;
         }
@@ -58,6 +64,7 @@ const nextButton = document.querySelector(".button-1");
 nextButton.addEventListener("click", function() {
     addRandomItems();
     clearDropTarget();
+
 
 });
 
@@ -147,18 +154,12 @@ function addRandomItems() {
         itemsDiv.appendChild(itemDiv);
     }
 }
-// Function to clear the drop target
-// function clearDropTarget() {
-//     console.log('hello');
-//     while (dropTarget.firstChild) {
-//         dropTarget.removeChild(dropTarget.firstChild);
-//     }
-// }
+
 function clearDropTarget() {
     const dropTarget = document.getElementById("dropTarget");
 
     // Remove any existing img elements
-    const imgElements = dropTarget.getElementsByTagName("img");
+    const imgElements = dropTarget.getElementsByClassName("drag");
     while (imgElements.length > 0) {
         imgElements[0].parentNode.removeChild(imgElements[0]);
     }
@@ -166,16 +167,17 @@ function clearDropTarget() {
     // Remove any existing span elements
     const spanElements = dropTarget.getElementsByClassName("mark");
     console.log(spanElements);
-    // while (spanElements.length > 0) {
-    //     spanElements[0].parentNode.removeChild(spanElements[0]);
-    // }
     spanElements[0].style.display = 'none';
     const dragText = document.getElementById("dragText");
     dragText.style.display = "flex";
-
-    // document.getElementById("dragText").style.display = "none"; // Hide the drag text
-
-
+    const gifElements = document.getElementsByClassName("gif1");
+    if (gifElements.length > 0) {
+        gifElements[0].style.display = 'none';
+    }
+    const gifElements2 = document.getElementsByClassName("gif2");
+    if (gifElements2.length > 0) {
+        gifElements2[0].style.display = 'none';
+    }
 }
 // Function to update the score
 function updateScore(scoreChange) {
