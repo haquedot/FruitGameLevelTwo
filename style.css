@@ -6,6 +6,7 @@
 }
 
 body {
+    margin: 0;
     background-color: var(--body-color);
     text-align: center;
 }
@@ -30,6 +31,7 @@ h1 {
     width: 200px;
     height: 200px;
     margin: 10px;
+    border-radius: 10px;
     background-color: var(--div-color);
     box-shadow: var(--shadow);
 }
@@ -53,6 +55,7 @@ h1 {
     margin: auto;
     width: 200px;
     height: 200px;
+    border-radius: 10px;
     background-color: var(--div-color);
     box-shadow: var(--shadow);
     justify-content: center;
@@ -75,8 +78,8 @@ h1 {
 /* CSS */
 
 .button-1 {
-    margin: 20px;
-    background-color: #9affd0;
+    margin-top: 20px;
+    background-color: #5176c6;
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
@@ -84,10 +87,10 @@ h1 {
     cursor: pointer;
     display: inline-block;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    height: 40px;
-    width: 150px;
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+    width: 200px;
     list-style: none;
     outline: none;
     padding: 10px 16px;
