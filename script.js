@@ -79,12 +79,26 @@ function addRandomItems() {
         "random/cucumber.svg",
         "random/pea.svg",
         "random/tomato.svg",
+        "random/bucket.svg",
+        "random/football.svg",
+        "random/toy-train.svg",
+        "random/rubiks-cube.svg",
+        "random/rocker.svg",
+
     ];
 
     const fruits = [
         "fruits/apple.svg",
         "fruits/orange.svg",
-        "fruits/bananas.svg"
+        "fruits/bananas.svg",
+        "fruits/mango.svg",
+        "fruits/grapes.svg",
+        "fruits/watermelon.svg",
+        "fruits/strawberry.svg",
+        "fruits/pineapple.svg"
+
+
+
 
     ];
 
@@ -127,6 +141,7 @@ function addRandomItems() {
         }
         itemImg.addEventListener("dragstart", drag);
 
+
         // Append the item to the items div
         itemDiv.appendChild(itemImg);
         itemsDiv.appendChild(itemDiv);
@@ -168,4 +183,9 @@ function updateScore(scoreChange) {
     const currentScore = parseInt(scoreElement.textContent.split(":")[1]);
     const newScore = currentScore + scoreChange;
     scoreElement.textContent = "Score: " + newScore;
+}
+
+theme = document.getElementById("theme");
+theme.onclick = function() {
+    document.body.classList.toggle("dark-theme");
 }

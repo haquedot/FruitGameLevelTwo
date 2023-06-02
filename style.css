@@ -1,13 +1,21 @@
+:root {
+    --body-color: #ecf9f3;
+    --div-color: white;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --text-color: rgb(26, 26, 26);
+}
+
 body {
-    background-color: #ecf9f3;
+    background-color: var(--body-color);
     text-align: center;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
 }
 
 #score {
+    color: var(--text-color);
     font-size: 20px;
 }
 
@@ -22,8 +30,8 @@ h1 {
     width: 200px;
     height: 200px;
     margin: 10px;
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: var(--div-color);
+    box-shadow: var(--shadow);
 }
 
 .item {
@@ -45,8 +53,8 @@ h1 {
     margin: auto;
     width: 200px;
     height: 200px;
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: var(--div-color);
+    box-shadow: var(--shadow);
     justify-content: center;
     align-items: center;
 }
@@ -67,19 +75,19 @@ h1 {
 /* CSS */
 
 .button-1 {
-    margin: 40px;
-    background-color: #004e29;
+    margin: 20px;
+    background-color: #9affd0;
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: #ffffff;
     cursor: pointer;
     display: inline-block;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 500;
     height: 40px;
-    line-height: 20px;
+    width: 150px;
     list-style: none;
     outline: none;
     padding: 10px 16px;
@@ -96,4 +104,33 @@ h1 {
 .button-1:hover,
 .button-1:focus {
     background-color: #F082AC;
+}
+
+.dark-theme {
+    --body-color: #0C134F;
+    --div-color: #ecf9f3;
+    --shadow: rgba(53, 53, 53, 0.63) 0px 7px 29px 0px;
+    --text-color: white;
+}
+
+.btn {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: right;
+}
+
+.btn button {
+    margin-right: 30px;
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgb(255, 255, 255) 0px -36px 30px 0px inset, rgb(255, 255, 255) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
